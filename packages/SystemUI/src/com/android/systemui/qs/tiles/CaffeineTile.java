@@ -117,6 +117,7 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleLongClick() {
+        setCpuInfoEnabled();
     }
 
     @Override
@@ -132,6 +133,24 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
     @Override
     public int getMetricsCategory() {
         return LineageMetricsLogger.TILE_CAFFEINE;
+    }
+
+    private boolean setCpuInfoEnabled() {
+        boolean enabled = Settings.Global.getInt(mContext.getContentResolver(),
+                Settings.Global.SHOW_CPU_OVERLAY, 1) != 0;
+        Intent service = (new Intent())
+                .setClassName("com.android.systemui",
+                "com.android.systemui.CPUInfoService");
+        if (!enabled) {
+            Settings.Global.putInt(
+                mContext.getContentResolver(), Settings.Global.SHOW_CPU_OVERLAY, 1);
+            mContext.startService(service);
+        } else {
+            Settings.Global.putInt(
+                mContext.getContentResolver(), Settings.Global.SHOW_CPU_OVERLAY, 0);
+            mContext.stopService(service);
+        }
+        return enabled;
     }
 
     private void startCountDown(long duration) {
