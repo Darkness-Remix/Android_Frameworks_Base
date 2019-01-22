@@ -18,6 +18,7 @@ package com.android.systemui;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -98,33 +99,23 @@ public class CPUInfoService extends Service {
 
         CPUView(Context c) {
             super(c);
-
-            setPadding(4, 4, 4, 4);
-            //setBackgroundResource(com.android.internal.R.drawable.load_average_background);
-
-            // Need to scale text size by density...  but we won't do it
-            // linearly, because with higher dps it is nice to squeeze the
-            // text a bit to fit more of it.  And with lower dps, trying to
-            // go much smaller will result in unreadable text.
-            int textSize = 10;
             float density = c.getResources().getDisplayMetrics().density;
-            if (density < 1) {
-                textSize = 9;
-            } else {
-                textSize = (int)(12 * density);
-                if (textSize < 10) {
-                    textSize = 10;
-                }
-            }
+            int paddingPx = Math.round(5 * density);
+            setPadding(paddingPx, paddingPx, paddingPx, paddingPx);
+            setBackgroundColor(Color.argb(0x60, 0, 0, 0));
+
+            final int textSize = Math.round(12 * density);
+
             mOnlinePaint = new Paint();
             mOnlinePaint.setAntiAlias(true);
             mOnlinePaint.setTextSize(textSize);
-            mOnlinePaint.setARGB(255, 0, 255, 0);
+            mOnlinePaint.setColor(Color.WHITE);
+            mOnlinePaint.setShadowLayer(5.0f, 0.0f, 0.0f, Color.BLACK);
 
             mOfflinePaint = new Paint();
             mOfflinePaint.setAntiAlias(true);
             mOfflinePaint.setTextSize(textSize);
-            mOfflinePaint.setARGB(255, 255, 0, 0);
+            mOfflinePaint.setColor(Color.RED);
 
             mAscent = mOnlinePaint.ascent();
             float descent = mOnlinePaint.descent();
