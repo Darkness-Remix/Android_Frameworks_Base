@@ -5306,11 +5306,11 @@ public final class ViewRootImpl implements ViewParent,
             mAttachInfo.mUnbufferedDispatchRequested = false;
             mAttachInfo.mHandlingPointerEvent = true;
             boolean handled = mView.dispatchPointerEvent(event);
-            int action = event.getActionMasked();
+            int mAction = event.getActionMasked();
             if (!SCROLL_BOOST_SS_ENABLE) {
-                if (action == MotionEvent.ACTION_MOVE) {
+                if (mAction == MotionEvent.ACTION_MOVE) {
                     mHaveMoveEvent = true;
-                } else if (action == MotionEvent.ACTION_UP) {
+                } else if (mAction == MotionEvent.ACTION_UP) {
                     mHaveMoveEvent = false;
                     mIsPerfLockAcquired = false;
                 }
