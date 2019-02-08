@@ -1683,6 +1683,7 @@
         <!-- The standard AOSP fused location provider -->
         <item>com.android.location.fused</item>
         <!-- microG unifiednlp location provider (standalone) -->
+        <item>com.google.android.gms</item>
         <item>org.microg.nlp</item>
     </string-array>
 
