@@ -558,6 +558,9 @@ final class ActivityManagerShellCommand extends ShellCommand {
                 if (result.who != null) {
                     pw.println("Activity: " + result.who.flattenToShortString());
                 }
+                if (result.thisTime >= 0) {
+                    pw.println("ThisTime: " + result.thisTime);
+                }
                 if (result.totalTime >= 0) {
                     pw.println("TotalTime: " + result.totalTime);
                 }
