@@ -315,7 +315,6 @@ final class ActivityRecord extends ConfigurationContainer implements AppWindowCo
     boolean sleeping;       // have we told the activity to sleep?
     boolean launching;      // is activity launch in progress?
     boolean nowVisible;     // is this activity's window visible?
-    boolean drawn;          // is this activity's window drawn?
     boolean mClientVisibilityDeferred;// was the visibility change message to client deferred?
     boolean idle;           // has the activity gone idle?
     boolean hasBeenLaunched;// has this activity ever been launched?
@@ -883,7 +882,6 @@ final class ActivityRecord extends ConfigurationContainer implements AppWindowCo
         inHistory = false;
         visible = false;
         nowVisible = false;
-        drawn = false;
         idle = false;
         hasBeenLaunched = false;
         mStackSupervisor = supervisor;
@@ -2063,7 +2061,6 @@ final class ActivityRecord extends ConfigurationContainer implements AppWindowCo
     @Override
     public void onWindowsDrawn(long timestamp) {
         synchronized (service) {
-            drawn = true;
             final WindowingModeTransitionInfoSnapshot info = mStackSupervisor
                     .getActivityMetricsLogger().notifyWindowsDrawn(getWindowingMode(), timestamp);
             final int windowsDrawnDelayMs = info != null ? info.windowsDrawnDelayMs : INVALID_DELAY;
@@ -2074,13 +2071,6 @@ final class ActivityRecord extends ConfigurationContainer implements AppWindowCo
             if (task != null) {
                 task.hasBeenVisible = true;
             }
-        }
-    }
-
-    @Override
-    public void onWindowsNotDrawn(long timestamp) {
-        synchronized (service) {
-            drawn = false;
         }
     }
 
