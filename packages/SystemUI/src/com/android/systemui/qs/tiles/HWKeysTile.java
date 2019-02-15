@@ -28,6 +28,8 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 import com.android.systemui.R.drawable;
 
+import org.lineageos.internal.logging.LineageMetricsLogger;
+
 /** Quick settings tile: HWKeys Actions **/
 public class HWKeysTile extends QSTileImpl<BooleanState> {
 
@@ -123,7 +125,7 @@ public class HWKeysTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.EXTENSIONS;
+        return MetricsEvent.RESURRECTED;
     }
 
     @Override

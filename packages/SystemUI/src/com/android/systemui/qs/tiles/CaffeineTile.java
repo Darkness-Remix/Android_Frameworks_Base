@@ -21,6 +21,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.provider.Settings;
+import android.provider.Settings.Global;
 import android.os.CountDownTimer;
 import android.os.PowerManager;
 import android.os.SystemClock;
