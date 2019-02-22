@@ -227,11 +227,11 @@ public class CPUInfoService extends Service {
         private String BAT_TEMP = BATTERY_PARAMETERS + "/temp";
         private String TEMP = "/sys/class/thermal/thermal_zone"; //apq8084 zones bat=0, cpu_soq=1, core0-3=6-9, gpu=10
         //Bellow are the apq8084/quark path others devices may be different path all together or just the end eg qcom,cpubw.**
-        private String GPU_FREQ = "/sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk";
+        private String GPU_FREQ = "/sys/devices/soc/b00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk";
         private String GPU_GOV = "/sys/class/kgsl/kgsl-3d0/devfreq/governor";
         private String GPU_BUSY = "/sys/class/kgsl/kgsl-3d0/gpubusy";
-        private String RAM_CUR_FREQ = "/sys/class/devfreq/qcom,cpubw.35/cur_freq";
-        private String RAM_GOV = "/sys/class/devfreq/qcom,cpubw.35/governor";
+        private String RAM_CUR_FREQ = "/sys/class/devfreq/soc:qcom,cpubw/cur_freq";
+        private String RAM_GOV = "/sys/class/devfreq/soc:qcom,cpubw/governor";
 
         private String currFreq, currGov;
         private StringBuffer sb;
