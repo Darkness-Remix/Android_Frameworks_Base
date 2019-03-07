@@ -328,9 +328,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
     public static final String SYSTEM_DIALOG_REASON_RECENT_APPS = "recentapps";
     static public final String SYSTEM_DIALOG_REASON_SCREENSHOT = "screenshot";
 
-    private static final String SCREEN_BRIGHTNESS_MODE =
+    public static final String SCREEN_BRIGHTNESS_MODE =
             "system:" + Settings.System.SCREEN_BRIGHTNESS_MODE;
-    private static final String STATUS_BAR_BRIGHTNESS_CONTROL =
+    public static final String STATUS_BAR_BRIGHTNESS_CONTROL =
             "lineagesystem:" + LineageSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
     private static final String BERRY_GLOBAL_STYLE =
             "lineagesystem:" + LineageSettings.System.BERRY_GLOBAL_STYLE;
@@ -645,6 +645,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
     private NotificationMediaManager mMediaManager;
     protected NotificationLockscreenUserManager mLockscreenUserManager;
     protected NotificationRemoteInputManager mRemoteInputManager;
+
+    private boolean mShowMediaMetadata;
 
     private BroadcastReceiver mWallpaperChangedReceiver = new BroadcastReceiver() {
         @Override
@@ -1996,8 +1998,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         }
 
         Drawable artworkDrawable = null;
-        if (mediaMetadata != null && (Settings.System.getIntForUser(mContext.getContentResolver(),
-            Settings.System.LOCKSCREEN_MEDIA_METADATA, 1, UserHandle.USER_CURRENT) == 1)) {
+        if (mediaMetadata != null && mShowMediaMetadata) {
             Bitmap artworkBitmap = mediaMetadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
             if (artworkBitmap == null) {
                 artworkBitmap = mediaMetadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
@@ -2480,6 +2481,35 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         return LineageSettings.System.getString(mContext.getContentResolver(),
                 LineageSettings.System.BERRY_DARK_OVERLAY,
                 StyleInterface.OVERLAY_DARK_DEFAULT);
+    }
+
+    public boolean isCurrentRoundedSameAsFw() {
+        float density = Resources.getSystem().getDisplayMetrics().density;
+        Resources res = null;
+        try {
+            res = mContext.getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+            // If we can't get resources, return true so that updateCorners doesn't attempt to
+            // set corner values
+            return true;
+        }
+
+        // Resource IDs for framework properties
+        int resourceIdRadius = res.getIdentifier("com.android.systemui:dimen/rounded_corner_radius", null, null);
+        int resourceIdPadding = res.getIdentifier("com.android.systemui:dimen/rounded_corner_content_padding", null, null);
+
+        // Values on framework resources
+        int cornerRadiusRes = (int) (res.getDimension(resourceIdRadius) / density);
+        int contentPaddingRes = (int) (res.getDimension(resourceIdPadding) / density);
+
+        // Values in Settings DBs
+        int cornerRadius = Settings.Secure.getInt(mContext.getContentResolver(),
+                Settings.Secure.SYSUI_ROUNDED_SIZE, cornerRadiusRes);
+        int contentPadding = Settings.Secure.getInt(mContext.getContentResolver(),
+                Settings.Secure.SYSUI_ROUNDED_CONTENT_PADDING, contentPaddingRes);
+
+        return (cornerRadiusRes == cornerRadius) && (contentPaddingRes == contentPadding);
     }
 
     @Nullable
@@ -4641,6 +4671,30 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             // Make sure we have the correct navbar/statusbar colors.
             mStatusBarWindowManager.setKeyguardDark(useDarkText);
         }
+        updateCorners();
+    }
+
+    private void updateCorners() {
+        boolean sysuiRoundedFwvals = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                    Settings.Secure.SYSUI_ROUNDED_FWVALS, 1, UserHandle.USER_CURRENT) == 1;
+        if (sysuiRoundedFwvals && !isCurrentRoundedSameAsFw()) {
+            float density = Resources.getSystem().getDisplayMetrics().density;
+            Resources res = null;
+            try {
+                res = mContext.getPackageManager().getResourcesForApplication("com.android.systemui");
+            } catch (NameNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            if (res != null) {
+                int resourceIdRadius = res.getIdentifier("com.android.systemui:dimen/rounded_corner_radius", null, null);
+                Settings.Secure.putInt(mContext.getContentResolver(),
+                    Settings.Secure.SYSUI_ROUNDED_SIZE, (int) (res.getDimension(resourceIdRadius) / density));
+                int resourceIdPadding = res.getIdentifier("com.android.systemui:dimen/rounded_corner_content_padding", null, null);
+                Settings.Secure.putInt(mContext.getContentResolver(),
+                    Settings.Secure.SYSUI_ROUNDED_CONTENT_PADDING, (int) (res.getDimension(resourceIdPadding) / density));
+            }
+        }
     }
 
     private void updateDozingState() {
@@ -5861,6 +5915,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             resolver.registerContentObserver(Settings.System.getUriFor(
                   Settings.System.USE_SLIM_RECENTS),
                   false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.Secure.SYSUI_ROUNDED_FWVALS),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
         @Override
@@ -5875,6 +5932,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.USE_SLIM_RECENTS))) {
                 updateRecentsMode();
+            } else if (uri.equals(Settings.Secure.getUriFor(Settings.Secure.SYSUI_ROUNDED_FWVALS))) {
+                updateCorners();
             }
         }
 
@@ -5886,6 +5945,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             updateTickerAnimation();
             updateTickerTickDuration();
             updateRecentsMode();
+            updateCorners();
         }
     }
 
@@ -6454,6 +6514,8 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                     == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
         } else if (STATUS_BAR_BRIGHTNESS_CONTROL.equals(key)) {
             mBrightnessControl = newValue != null && Integer.parseInt(newValue) == 1;
+        } else if (LOCKSCREEN_MEDIA_METADATA.equals(key)) {
+            mShowMediaMetadata = newValue == null || Integer.parseInt(newValue) != 0;
         } else if (BERRY_GLOBAL_STYLE.equals(key)) {
             updateTheme();
         }

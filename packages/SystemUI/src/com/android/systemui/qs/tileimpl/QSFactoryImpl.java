@@ -61,6 +61,8 @@ import com.android.systemui.qs.QSTileHost;
 import com.android.systemui.util.leak.GarbageMonitor;
 import com.android.systemui.qs.tiles.WeatherTile;
 import com.android.systemui.qs.tiles.GamingModeTile;
+import com.android.systemui.qs.tiles.AODTile;
+import com.android.systemui.qs.tiles.OneHandTile;
 
 public class QSFactoryImpl implements QSFactory {
 
@@ -151,6 +153,10 @@ public class QSFactoryImpl implements QSFactory {
                 return new WeatherTile(mHost);
             case "gaming":
                 return new GamingModeTile(mHost);
+            case "aod":
+                return new AODTile(mHost);
+            case "onehand":
+                return new OneHandTile(mHost);
         }
 
         // Intent tiles.
