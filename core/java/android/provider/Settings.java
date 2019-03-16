@@ -4226,6 +4226,12 @@ public final class Settings {
         public static final Validator SHOW_BATTERY_PERCENT_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
 
+	/**
+         * show the membar in recents
+         *  @hide
+         */
+        public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
+
         /**
          * If On-The-Go should be displayed at the power menu.
          *
@@ -5250,6 +5256,36 @@ public final class Settings {
         public static final String DOZE_ON_CHARGE_NOW = "doze_on_charge_now";
 
         /**
+         * Which component to use for Recents UI
+         * 0 - Pie Recents (Quickstep)
+         * 1 - Oreo Recents (SystemUI)
+         * @hide
+         */
+        public static final String RECENTS_COMPONENT = "recents_component";
+
+        /** @hide */
+        public static final Validator RECENTS_COMPONENT_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 1);
+
+        /**
+         * show clear all recents button
+         * @hide
+         */
+        public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+
+        /**
+         * location of the clear all rectents button
+         * @hide
+         */
+        public static final String  RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+
+        /**
+         * show recents in grid style or android go style
+         * @hide
+         */
+        public static final String RECENTS_LAYOUT_STYLE = "recents_layout_style";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5346,6 +5382,7 @@ public final class Settings {
             TRANSPARENT_POWER_DIALOG_DIM,
             ONE_HAND_MODE_ENABLED,
             DOZE_ON_CHARGE,
+            RECENTS_COMPONENT,
         };
 
         /**
@@ -5505,6 +5542,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(TRANSPARENT_POWER_DIALOG_DIM);
             PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
             PRIVATE_SETTINGS.add(DOZE_ON_CHARGE);
+            PRIVATE_SETTINGS.add(RECENTS_COMPONENT);
         }
 
         /**
@@ -5653,6 +5691,7 @@ public final class Settings {
             VALIDATORS.put(NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
             VALIDATORS.put(ONE_HAND_MODE_ENABLED, ONE_HAND_MODE_ENABLED_VALIDATOR);
             VALIDATORS.put(DOZE_ON_CHARGE, DOZE_ON_CHARGE_VALIDATOR);
+            VALIDATORS.put(RECENTS_COMPONENT,RECENTS_COMPONENT_VALIDATOR);
         }
 
         /**
