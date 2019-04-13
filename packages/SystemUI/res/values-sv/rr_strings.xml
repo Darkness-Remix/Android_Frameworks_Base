@@ -42,6 +42,13 @@
     <string name="quick_settings_screenrecord_lq_label">Skärminspelning 480p</string>
     <string name="quick_settings_screenrecord_mq_label">Skärminspelning 720p</string>
     <string name="quick_settings_screenrecord_hq_label">Skärminspelning 720p+</string>
+    <!-- Sound QS Tile -->
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">CPU Info</string>
+    <string name="accessibility_quick_settings_cpuinfo_off">CPU Info av</string>
+    <string name="accessibility_quick_settings_cpuinfo_on">CPU Info på</string>
+    <string name="accessibility_quick_settings_cpuinfo_changed_off">CPU Info avstängd</string>
+    <string name="accessibility_quick_settings_cpuinfo_changed_on">CPU Info påslagen</string>
     <!-- Screenshot Delete Toast -->
     <string name="delete_screenshot_toast">Skärmdump togs bort</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
@@ -90,7 +97,6 @@
     <string name="quick_settings_smart_pixels">Smarta pixlar</string>
     <!-- On The Go -->
     <string name="onthego_notif_options">Alternativ</string>
-    <!-- Weather string format in expanded statusbar header -->
     <!-- Gaming Mode -->
     <string name="gaming_mode_tile_title">Spelläge</string>
     <string name="gaming_mode_dialog_title">Spelläge</string>

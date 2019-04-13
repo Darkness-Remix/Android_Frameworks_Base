@@ -5051,30 +5051,6 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
-         * Statusbar weather font size setting
-         * @hide
-         */
-        public static final String STATUS_BAR_WEATHER_SIZE = "status_bar_weather_size";
-
-        /**
-         * Statusbar weather font style setting
-         * @hide
-         */
-        public static final String STATUS_BAR_WEATHER_FONT_STYLE = "status_bar_weather_font_style";
-
-        /**
-         * Status bar weather temperature
-         * 0: Hide the temperature
-         * 1: Display the temperature with scale and image
-         * 2: Display the temperature without scale and with image
-         * 3: Display the temparature with scale and without image
-         * 4: Display the temperature without scale and without image
-         * 5: Display the temperature image
-         * @hide
-         */
-	public static final String STATUS_BAR_SHOW_WEATHER_TEMP = "status_bar_show_weather_temp";
-
-        /**
          * Enable blocking wakelock
          * @hide
          */
@@ -5286,6 +5262,119 @@ public final class Settings {
         public static final String RECENTS_LAYOUT_STYLE = "recents_layout_style";
 
         /**
+         * Control how to handle the display cutout
+         * @hide
+         */
+        public static final String DISPLAY_CUTOUT_MODE = "display_cutout_mode";
+
+        /** @hide */
+        private static final Validator DISPLAY_CUTOUT_MODE_VALIDATOR = new
+                SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+
+        /**
+         * Control how to handle the display cutout
+         * @hide
+         */
+        public static final String STOCK_STATUSBAR_IN_HIDE = "stock_statusbar_in_hide";
+
+        /** @hide */
+        private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to use the custom status bar header or not
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to apply a shadow on top of the header image
+         * value is the alpha value of the shadow image is 0 -> no shadow -> 255 black
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW =
+                "status_bar_custom_header_shadow";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
+         * header image package to use for daylight header - package name - null if default
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK =
+                "status_bar_daylight_header_pack";
+
+        private static final Validator OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * Current active provider - available currently "static" "daylight"
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER =
+                "status_bar_custom_header_provider";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * Manual override picture to use
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE =
+                "status_bar_custom_header_image";
+
+        private static final Validator OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * @hide
+         */
+        public static final String OMNI_STATUS_BAR_FILE_HEADER_IMAGE =
+                "status_bar_file_header_image";
+
+        private static final Validator OMNI_STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
+         * Wheter to show network traffic indicator in statusbar
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE =
+                "network_traffic_expanded_status_bar_state";
+
+        /** @hide */
+        private static final Validator NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether allowing pocket service to register sensors and dispatch informations.
+         *   0 = disabled
+         *   1 = enabled
+         * @author Carlo Savignano
+         * @hide
+         */
+        public static final String POCKET_JUDGE = "pocket_judge";
+
+        /**
+         * Force expanded notifications on all apps that support it.
+         * @hide
+         */
+        public static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
+
+        private static final Validator FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Hide Statusbar on LockScreen
+         * @hide
+         */
+        public static final String HIDE_LOCKSCREEN_STATUS_BAR = "hide_lockscreen_status_bar";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5383,6 +5472,16 @@ public final class Settings {
             ONE_HAND_MODE_ENABLED,
             DOZE_ON_CHARGE,
             RECENTS_COMPONENT,
+            DISPLAY_CUTOUT_MODE,
+            STOCK_STATUSBAR_IN_HIDE,
+            OMNI_STATUS_BAR_CUSTOM_HEADER,
+            OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW,
+            OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK,
+            OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER,
+            OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
+            OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
+            NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE,
+            FORCE_EXPANDED_NOTIFICATIONS,
         };
 
         /**
@@ -5543,6 +5642,18 @@ public final class Settings {
             PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
             PRIVATE_SETTINGS.add(DOZE_ON_CHARGE);
             PRIVATE_SETTINGS.add(RECENTS_COMPONENT);
+            PRIVATE_SETTINGS.add(DISPLAY_CUTOUT_MODE);
+            PRIVATE_SETTINGS.add(STOCK_STATUSBAR_IN_HIDE);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE);
+            PRIVATE_SETTINGS.add(OMNI_STATUS_BAR_FILE_HEADER_IMAGE);
+            PRIVATE_SETTINGS.add(POCKET_JUDGE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE);
+            PRIVATE_SETTINGS.add(FORCE_EXPANDED_NOTIFICATIONS);
+            PRIVATE_SETTINGS.add(HIDE_LOCKSCREEN_STATUS_BAR);
         }
 
         /**
@@ -5692,6 +5803,22 @@ public final class Settings {
             VALIDATORS.put(ONE_HAND_MODE_ENABLED, ONE_HAND_MODE_ENABLED_VALIDATOR);
             VALIDATORS.put(DOZE_ON_CHARGE, DOZE_ON_CHARGE_VALIDATOR);
             VALIDATORS.put(RECENTS_COMPONENT,RECENTS_COMPONENT_VALIDATOR);
+            VALIDATORS.put(DISPLAY_CUTOUT_MODE, DISPLAY_CUTOUT_MODE_VALIDATOR);
+            VALIDATORS.put(STOCK_STATUSBAR_IN_HIDE, STOCK_STATUSBAR_IN_HIDE_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_SHADOW_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK,
+                    OMNI_STATUS_BAR_DAYLIGHT_HEADER_PACK_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_PROVIDER_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE,
+                    OMNI_STATUS_BAR_CUSTOM_HEADER_IMAGE_VALIDATOR);
+            VALIDATORS.put(OMNI_STATUS_BAR_FILE_HEADER_IMAGE,
+                    OMNI_STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE_VALIDATOR);
+            VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS,FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
         }
 
         /**
@@ -10057,6 +10184,15 @@ public final class Settings {
         public static final String SMARTBAR_DOUBLETAP_SLEEP = "smartbar_doubletap_sleep";
 
         /**
+         * Boolean value whether to link ringtone and notification volume
+         * @hide
+         */
+        public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+        /** @hide */
+        private static final Validator VOLUME_LINK_NOTIFICATION_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * This are the settings to be backed up.
          *
          * NOTE: Settings are backed up and restored in the order they appear
@@ -10154,6 +10290,7 @@ public final class Settings {
             SCREENSAVER_ACTIVATE_ON_SLEEP,
             LOCKDOWN_IN_POWER_MENU,
             SHOW_FIRST_CRASH_DIALOG_DEV_OPTION,
+            VOLUME_LINK_NOTIFICATION,
             VOLUME_HUSH_GESTURE,
             MANUAL_RINGER_TOGGLE_COUNT,
             HUSH_GESTURE_USED,
@@ -10304,6 +10441,7 @@ public final class Settings {
                     ENABLED_NOTIFICATION_POLICY_ACCESS_PACKAGES_VALIDATOR); //legacy restore setting
             VALIDATORS.put(HUSH_GESTURE_USED, HUSH_GESTURE_USED_VALIDATOR);
             VALIDATORS.put(MANUAL_RINGER_TOGGLE_COUNT, MANUAL_RINGER_TOGGLE_COUNT_VALIDATOR);
+            VALIDATORS.put(VOLUME_LINK_NOTIFICATION, VOLUME_LINK_NOTIFICATION_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_BATTERY_STYLE, STATUS_BAR_BATTERY_STYLE_VALIDATOR);
             VALIDATORS.put(LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS, BOOLEAN_VALIDATOR);
             VALIDATORS.put(LOCK_SCREEN_SHOW_NOTIFICATIONS, BOOLEAN_VALIDATOR);

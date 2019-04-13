@@ -33,4 +33,9 @@
    <!-- advanced reboot to recovery. -->
    <!-- advanced reboot system -->
    <!-- AOKP custom system animations -->
+   <!-- SystemUI Restart -->
+   <!-- Pocket Lock -->
+   <string name="pocket_lock_message_long_press">לחץ לחיצה ארוכה gk כפתור הכיבוי כדי להגיב</string>
+   <!-- Defines the sysfs attribute path used by pocket bridge
+        to communicate pocket state to the pocket judge kernel driver. -->
 </resources>

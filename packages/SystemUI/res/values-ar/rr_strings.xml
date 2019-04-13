@@ -24,7 +24,7 @@
     <string name="lte_off">LTE لا يعمل</string>
     <!-- Screenshot QS tile -->
     <string name="quick_settings_screenshot_label">لقطة الشاشة</string>
-    <string name="quick_settings_region_screenshot_label">لقطة الشاشة جزئية</string>
+    <string name="quick_settings_region_screenshot_label">لقطة الشاشة الجزئية</string>
     <!-- Heads up snooze toast -->
     <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s</xliff:g> - التنبيهات الخاطفة غافية لدقيقة واحدة.</string>
     <string name="heads_up_snooze_message"><xliff:g id="string">%s</xliff:g> - التنبيهات الخاطفة غافية ل <xliff:g id="number">%d</xliff:g> دقائق.</string>
@@ -49,6 +49,17 @@
     <string name="quick_settings_screenrecord_lq_label">تسجيل الشاشة بجودة 480p</string>
     <string name="quick_settings_screenrecord_mq_label">تسجيل الشاشة بجودة 720p</string>
     <string name="quick_settings_screenrecord_hq_label">تسجيل الشاشة بجودة 720p+</string>
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">الصوت</string>
+    <string name="quick_settings_sound_ring">رنين</string>
+    <string name="quick_settings_sound_vibrate">إهتزاز</string>
+    <string name="quick_settings_sound_dnd">عدم الإزعاج</string>
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">معلومات المعالج</string>
+    <string name="accessibility_quick_settings_cpuinfo_off">إيقاف معلومات المعالج</string>
+    <string name="accessibility_quick_settings_cpuinfo_on">تشغيل معلومات المعالج</string>
+    <string name="accessibility_quick_settings_cpuinfo_changed_off">تم إيقاف تشغيل معلومات المعالج</string>
+    <string name="accessibility_quick_settings_cpuinfo_changed_on">تم تشغيل معلومات المعالج</string>
     <!-- Screenshot Delete Toast -->
     <string name="delete_screenshot_toast">تم حذف لقطة الشاشة</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
@@ -139,8 +150,6 @@
     <string name="omnijaws_current_text">الآن</string>
     <string name="omnijaws_package_not_available">OmniJaws غير متاح</string>
     <string name="omnijaws_service_last_update">آخر تحديث:</string>
-    <!-- Weather string format in expanded statusbar header -->
-    <string name="status_bar_weather_format"><xliff:g id="temp">%1$s</xliff:g></string>
     <!-- Gaming Mode -->
     <string name="gaming_mode_tile_title">وضع الألعاب</string>
     <string name="gaming_mode_tile_toast">وضع الألعاب مفعل</string>
@@ -163,7 +172,7 @@
     <string name="global_action_restart_bootloader">Bootloader</string-->
     <string name="global_action_screenshot">لقطة الشاشة</string>
     <string name="global_action_screenrecord">تسجيل الشاشة</string>
-    <string name="global_action_flashlight">الكشاف</string>
+    <string name="global_action_flashlight">ضوء الفلاش</string>
     <!-- Advance location quick setting tile -->
     <string name="quick_settings_location_secondary_battery_saving">توفير البطارية</string>
     <string name="accessibility_quick_settings_location_battery_saving">تقرير الموقع: وضعية توفير الطاقة.</string>

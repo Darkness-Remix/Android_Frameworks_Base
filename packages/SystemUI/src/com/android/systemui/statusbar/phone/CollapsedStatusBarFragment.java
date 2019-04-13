@@ -88,10 +88,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     private ImageView RRLogo;
     private ImageView RRLogoRight;
-    private View mWeatherImageView;
-    private View mWeatherTextView;
     private int mShowLogo;
-    private int mShowWeather;
 
     private SignalCallback mSignalCallback = new SignalCallback() {
         @Override
@@ -114,9 +111,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                    false, this, UserHandle.USER_ALL);
             getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_LOGO),
-                    false, this, UserHandle.USER_ALL);
-            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -236,9 +230,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     .removeView(mNotificationIconAreaInner);
         }
         notificationIconArea.addView(mNotificationIconAreaInner);
-        mWeatherTextView = mStatusBar.findViewById(R.id.weather_temp);
-        mWeatherImageView = mStatusBar.findViewById(R.id.weather_image);
-        updateSettings(false);
         // Default to showing until we know otherwise.
         showNotificationIconArea(false);
     }
@@ -292,7 +283,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         // because the visual icon is in notification icon area rather than heads up's space.
         // whether the notification icon show or not, clock should hide when heads up show.
         if (mStatusBarComponent.isHeadsUpShouldBeVisible()) {
-            state |= DISABLE_CLOCK;
+            View clockView = mClockController.getClock();
+            boolean isRightClock = clockView.getId() == R.id.clock_right;
+            if (!isRightClock) {
+                state |= DISABLE_CLOCK;
+            }
         }
 
         if (mNetworkController != null && EncryptionHelper.IS_DATA_ENCRYPTED) {
@@ -514,9 +509,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         setCarrierLabel(animate);
         mShowLogo = Settings.System.getIntForUser(
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
-                UserHandle.USER_CURRENT);
-        mShowWeather = Settings.System.getIntForUser(
-                getContext().getContentResolver(), Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0,
                 UserHandle.USER_CURRENT);
         if (mNotificationIconAreaInner != null) {
             if (mShowLogo == 1) {

@@ -62,4 +62,8 @@
    <string name="animation_random">임의</string>
    <string name="action_null">빈</string>
    <string name="default_string">기본값</string>
+   <!-- SystemUI Restart -->
+   <!-- Pocket Lock -->
+   <!-- Defines the sysfs attribute path used by pocket bridge
+        to communicate pocket state to the pocket judge kernel driver. -->
 </resources>

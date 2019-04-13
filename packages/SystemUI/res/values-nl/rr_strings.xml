@@ -26,12 +26,16 @@
     <string name="quick_settings_screenshot_label">Schermafbeelding</string>
     <string name="quick_settings_region_screenshot_label">Gedeeltelijke schermafbeelding</string>
     <!-- Heads up snooze toast -->
+    <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s </xliff:g> - Meldingen zijn voor 1 minuut gedempt.</string>
+    <string name="heads_up_snooze_message"><xliff:g id="string">%s </xliff:g> - Meldingen zijn voor <xliff:g id="number">%d</xliff:g> minuten gedempt.</string>
     <!-- Screenrecord Notification Ticker -->
     <!-- Screenrecord notification title -->
     <!-- Screenrecord notification action: Stop -->
     <!-- Screenrecord notification action: show/hide pointer -->
     <!-- Screen record notification error title -->
     <!-- Screenshot QS tile -->
+    <!-- Sound QS Tile -->
+    <!-- CPUInfo tile -->
     <!-- Screenshot Delete Toast -->
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
     <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_power_charging [CHAR LIMIT=40]-->
@@ -43,7 +47,6 @@
     <!-- Pie controls -->
     <!-- Smart pixels QS tile -->
     <!-- On The Go -->
-    <!-- Weather string format in expanded statusbar header -->
     <!-- Gaming Mode -->
     <!-- Power Menu -->
     <!-- Global actions -->

@@ -18,7 +18,7 @@
    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
    <string name="permdesc_fakePackageSignature">Разрешает приложению выдавать себя за другое. Вредоносные приложения могут использовать это для доступа к личным данным приложения. Используйте только на свой страх и риск!</string>
    <!-- Button that copies the url to the log of a crashed application -->
-   <string name="aerr_copy">Скопировать ссылку на краш-репорт</string>
+   <string name="aerr_copy">Скопировать ссылку лога ошибки</string>
    <string name="url_copy_success">Ссылка скопирована успешно</string>
    <string name="url_copy_failed">Произошла ошибка во время загрузки лога на dogbin</string>
    <!-- Ambient play -->
@@ -27,22 +27,22 @@
    <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
    <string name="permlab_toggleNavigationEditor">Управление редактором панели навигации</string>
    <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-   <string name="permdesc_toggleNavigationEditor">Описание разрешения приложения, пользователь может выбрать каким приложениям позволять что либо.</string>
+   <string name="permdesc_toggleNavigationEditor">Позволяет приложению управлять редактором панели навигации.</string>
    <!-- Font service -->
    <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
    <string name="permlab_accessFontManager">доступ к менеджеру шрифтов</string>
    <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
    <string name="permdesc_accessFontManager">Позволяет приложению, получить доступ к менеджеру шрифтов.</string>
    <!-- [CHAR LIMIT=NONE] Error when a package is installed but got the missing fonts.xml file, notifying the user why it isn't showing up. -->
-   <string name="fontservice_incompatible_font">Набор шрифтов который вы установили несовместим, из-за отсутствия важных файлов (Например fonts.xml). Пожалуйста, обратитесь к разработчику набора для помощи.</string>
+   <string name="fontservice_incompatible_font">Набор шрифтов, который вы установили, несовместим из-за отсутствия файла fonts.xml. Пожалуйста, обратитесь к разработчику набора для получения поддержки.</string>
    <!-- advanced reboot to bootloader. -->
    <string name="reboot_to_bootloader_title">Перезагрузиться в Fastboot</string>
    <string name="reboot_to_bootloader_message">Перезагрузка в режим fastboot\u2026</string>
    <!-- advanced reboot to recovery. -->
-   <string name="reboot_to_recovery_title">Перезагрузиться в рекавери</string>
+   <string name="reboot_to_recovery_title">Перезагрузка в режим восстановления</string>
    <string name="reboot_to_recovery_message">Перезагрузка в режим восстановления\u2026</string>
    <!-- advanced reboot system -->
-   <string name="reboot_system_title">Полный перезапуск</string>
+   <string name="reboot_system_title">Перезапустить систему</string>
    <string name="reboot_system_message">Перезапуск\u2026</string>
    <!-- AOKP custom system animations -->
    <string name="animation_fade">Затухание</string>
@@ -62,4 +62,11 @@
    <string name="animation_random">Случайный</string>
    <string name="action_null">Пусто</string>
    <string name="default_string">По умолчанию</string>
+   <!-- SystemUI Restart -->
+   <string name="systemui_restart_title">Необходима перезагрузка системного интерфейса</string>
+   <string name="systemui_restart_message">Чтобы все изменения вступили в силу, требуется перезагрузка системного интерфейса. Перезагрузить сейчас?</string>
+   <!-- Pocket Lock -->
+   <string name="pocket_lock_message_long_press">Удерживайте кнопку питания для взаимодействия</string>
+   <!-- Defines the sysfs attribute path used by pocket bridge
+        to communicate pocket state to the pocket judge kernel driver. -->
 </resources>

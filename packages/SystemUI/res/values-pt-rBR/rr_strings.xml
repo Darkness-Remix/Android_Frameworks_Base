@@ -49,6 +49,17 @@
     <string name="quick_settings_screenrecord_lq_label">Gravação de tela 480p</string>
     <string name="quick_settings_screenrecord_mq_label">Gravação de tela 720p</string>
     <string name="quick_settings_screenrecord_hq_label">Gravação de tela 720p+</string>
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Som</string>
+    <string name="quick_settings_sound_ring">Toque</string>
+    <string name="quick_settings_sound_vibrate">Vibrar</string>
+    <string name="quick_settings_sound_dnd">Não pertube</string>
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">Informação da CPU</string>
+    <string name="accessibility_quick_settings_cpuinfo_off">Informação da CPU desligada</string>
+    <string name="accessibility_quick_settings_cpuinfo_on">Informações da CPU ligada</string>
+    <string name="accessibility_quick_settings_cpuinfo_changed_off">A Informação da CPU foi desligada</string>
+    <string name="accessibility_quick_settings_cpuinfo_changed_on">A Informação da CPU foi ligada</string>
     <!-- Screenshot Delete Toast -->
     <string name="delete_screenshot_toast">A captura de tela foi apagada</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
@@ -139,8 +150,6 @@
     <string name="omnijaws_current_text">Agora</string>
     <string name="omnijaws_package_not_available">OmniJaws indisponível</string>
     <string name="omnijaws_service_last_update">Última atualização:</string>
-    <!-- Weather string format in expanded statusbar header -->
-    <string name="status_bar_weather_format"><xliff:g id="temp">%1$s</xliff:g></string>
     <!-- Gaming Mode -->
     <string name="gaming_mode_tile_title">Modo de Jogo</string>
     <string name="gaming_mode_tile_toast">Modo jogo ativado</string>
