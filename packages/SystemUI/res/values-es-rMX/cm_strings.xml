@@ -22,4 +22,6 @@
     <string name="quick_settings_caffeine_label">Cafeína</string>
     <string name="accessibility_quick_settings_caffeine_off">Desactivar Cafeína.</string>
     <string name="accessibility_quick_settings_caffeine_on">Activar Cafeína.</string>
+    <string name="screen_pinning_toast_no_navbar">Mantén pulsado el botón Atrás para dejar de fijar esta pantalla</string>
+    <string name="nav_bar_layout_inverse">Diseño invertido</string>
 </resources>

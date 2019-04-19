@@ -4377,6 +4377,12 @@ public final class Settings {
         private static final Validator AMBIENT_RECOGNITION_NOTIFICATION_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
+        /*
+         * Whether to use smart clock or not
+         * @hide
+         */
+        public static final String SMART_CLOCK_ENABLE = "smart_clock_enable";
+
         /**
          * Number of qs columns on landscape orientation
          * @hide
@@ -5373,6 +5379,24 @@ public final class Settings {
          * @hide
          */
         public static final String HIDE_LOCKSCREEN_STATUS_BAR = "hide_lockscreen_status_bar";
+
+        /**
+         * Whether to hide the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
+
+        /**
+         * Whether to hide the items underneath the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_INFO = "lockscreen_info";
+
+        /**
+         * Select which lockscreen clock style to display
+         * @hide
+         */
+        public static final String LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
